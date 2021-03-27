@@ -29,10 +29,9 @@ ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", '*').split(" ")
 
 LOCAL_APPS = [
     'main',
-    'todoapp',
-    'ckeditor',
     'simple_history',
     'tinymce',
+    'rest_framework',
 ]
 
 INSTALLED_APPS = [
@@ -136,19 +135,11 @@ STATICFILES_DIRS = [
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/media')
 
-CKEDITOR_CONFIGS = {
-    'default': {
-        'toolbar': 'Custom',
-        'toolbar_Custom': [
-            ['Smiley', 'Bold', 'Italic', 'Underline', 'Styles'],
-            ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
-            ['Link', 'Unlink'],
-            ['RemoveFormat']
-        ],
-        'height': 300,
-        'width': 800,
-        # 'toolbarCanCollapse': True,
-        # 'toolbarStartupExpanded': False,
-        # 'toolbarLocation': 'bottom',
-    }
+
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
 }
