@@ -7,6 +7,7 @@ class ArticleHistoryAdmin(SimpleHistoryAdmin):
     list_display = ["id", "title", "url"]
     history_list_display = ["url"]
     list_display_links = ('title',)
+    readonly_fields = ('created_date',)
     search_fields = ['title', 'author__username']
 
 
