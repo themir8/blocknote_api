@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+	<title>BlockNote</title>
+	<!-- CSS only -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Akaya+Telivigala&display=swap" rel="stylesheet">
+
+	<link href='{% static "main/style.css" %}' rel="stylesheet">
+  {{ form.media }}
+</head>
+<body>
+  <h1 class="heading">BlockNote</h1>
+<div class="row">
+{% include "include/sidebar.html" %}
+<div class="container col-md-9">
+       <form method="post" autocomplete="off">
+            {% csrf_token %}
+            {{ form.title }}
+            {{ form.body }}
+            {% if article.title|length < 0 %}
+           	  <span>{{error}}</span>
+            {% endif %}
+            <input type="submit" value="Publish" align="center" class="btn btn-outline-dark">
+
+        </form>
+</div>
+</div>
+
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+<!-- <script type="text/javascript">
+  document.getElementById('clipboardCopy').addEventListener('click', clipboardCopy);
+  async function clipboardCopy() {
+    let text = document.querySelector("#input").value;
+    alert('Link copied!')
+    await navigator.clipboard.writeText(text);
+  }
+</script> -->
+</body>
+</html>
